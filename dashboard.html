@@ -26,7 +26,7 @@
 
   <div style="height:80px">
     <div style="float:left">
-      <img src="icon.png" width="188" height="68">
+      <img style="cursor:pointer" src="icon.png" width="188" height="68" onclick="myFunction5()">
     </div>
   </div>
   <div id='convas_top'>
@@ -47,7 +47,7 @@
       </div>
     </div>
     <div style="display:inline-flex">
-      <div style="background-color:#5B9BD5;opacity:0.5;padding-top:20px;border:1px solid #5B9BD5; border-radius: 10px; width: 130px; height:200px; margin:10px">
+      <div  align='center' style="background-color:#5B9BD5;opacity:0.5;padding-top:20px;border:1px solid #5B9BD5; border-radius: 10px; width: 130px; height:200px; margin:10px">
         IDENTITY
         <div align='center' style="padding-top:10px; font-size:12px; font-weight:bold">
           Title <br>
@@ -59,7 +59,7 @@
           Citizenship(s)
         </div>
       </div>
-      <div style="background-color:#ED7D31;opacity:0.5;padding-top:20px;border:1px solid #ED7D31; border-radius: 10px;width: 130px; height:200px; margin:10px">
+      <div  align='center' style="background-color:#ED7D31;opacity:0.5;padding-top:20px;border:1px solid #ED7D31; border-radius: 10px;width: 130px; height:200px; margin:10px">
         CONTACT
         <div align='center' style="padding-top:10px; font-size:12px;font-weight:bold">
           Address <br>
@@ -70,7 +70,7 @@
           Youtube
         </div>
       </div>
-      <div style="background-color:#FF0000;opacity:0.5;padding-top:20px;border:1px solid #FF0000; border-radius: 10px;width: 130px; height:200px; margin:10px">
+      <div align='center' style="background-color:#FF0000;opacity:0.5;padding-top:20px;border:1px solid #FF0000; border-radius: 10px;width: 130px; height:200px; margin:10px">
         FINANCE
         <div align='center' style="padding-top:10px; font-size:12px;font-weight:bold">
           Institue <br>
@@ -82,7 +82,7 @@
           Debit details
         </div>
       </div>
-      <div style="background-color:#A9D18E;opacity:0.5;padding-top:20px;border:1px solid #A9D18E; border-radius: 10px;width: 130px; height:200px; margin:10px">
+      <div  align='center' style="background-color:#A9D18E;opacity:0.5;padding-top:20px;border:1px solid #A9D18E; border-radius: 10px;width: 130px; height:200px; margin:10px">
         ALIAS
         <div align='center' style="padding-top:50px; font-size:12px;font-weight:bold">
           Alias Names
@@ -231,6 +231,17 @@ function myFunction3() {
 function myFunction4() {
     document.getElementById('profile').style.display = "block";
     document.getElementById("network").style.display = "none";
+}
+function myFunction5() {
+  document.getElementById('profile').style.display = "none";
+  document.getElementById("network").style.display = "none";
+  document.getElementById('table').style.display = "none";
+  document.getElementById("detailed").style.display = "none";
+  document.getElementById("travel").style.opacity = 1;
+  document.getElementById("shop").style.opacity= 1;
+  document.getElementById("parcel").style.opacity= 1;
+  document.getElementById("social").style.opacity= 1;
+  document.getElementById('convas_top').style.display = 'block';
 }
 
 </script>
