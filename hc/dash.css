@@ -1,0 +1,41 @@
+.fixed_headers {
+    width: 600px;
+    table-layout: fixed;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.fixed_headers th {
+    text-align: center;
+    font-size: 12px;
+    border: 1px solid #cccccc;
+}
+
+.fixed_headers td {
+    width: 150px;
+    font-size: 12px;
+    border: 1px solid #ffffff;
+    text-align: center;
+}
+
+.fixed_headers thead {
+    background-color: #333333;
+    color: #fdfdfd;
+}
+.fixed_headers tbody {
+    width: 600px;
+    display: block;
+    height: 290px;
+}
+.fixed_headers tfoot {
+    background-color: #333333;
+    color: #fdfdfd;
+    display: block;
+}
+
+.fixed_headers tbody tr:nth-child(even) {
+    background-color: #dddddd;
+}
+.fixed_headers tbody tr:hover {
+    background-color: #999999;
+    cursor: pointer;
+}

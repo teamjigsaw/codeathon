@@ -1,0 +1,237 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
+    <title>PROJECT: JIGSAW</title>
+    <script src="./hc/jquery-2.1.1.js"></script>
+    <script src="./hc/underscore.js"></script>
+    <script src="./hc/backbone.js"></script>
+    <script src="./hc/jquery.expander.js"></script>
+    <script src="./hc/jquery-ui.min.js"></script>
+    <script src="./dashboard.js"></script>
+    <link rel="stylesheet" type="text/css" href="./hc/dash.css">
+</head>
+
+<body style="width:600px; font-family: 'ubuntu', sans-serif; margin-left:25vw !important">
+  <!--
+    <script src="./hc/highstock.js"></script>
+    <script src="./hc/highcharts.js"></script>
+    <script src="./hc/highcharts-more.js"></script>
+    <script src="./hc/exporting.js"></script>
+    <script src="./hc/draggable-legend-box.js"></script>
+  -->
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+  <div style="height:80px">
+    <div style="float:left">
+      <img src="icon.png" width="188" height="68">
+    </div>
+  </div>
+  <div id='convas_top'>
+  <div id='canvas'> </div>
+  <div align="center" style="height:80px">
+      Date From: <input type="text" name="fname" placeholder="2018-01-01"> To: <input type="text" name="lname" placeholder="2018-03-15"><input style="margin-left:5px" type="submit" value="Query">
+  </div>
+  </div>
+  <div id='profile' style="display:none">
+    <div style="display:inline-flex; justify-content: center; width:100%">
+      <div align='center'>
+        <img src="poi.png" width="120" height="120" >
+      </div>
+      <div align='left' style="padding-top:40px">
+      <span style="margin-top:10px; cursor:pointer" onclick="myFunction3()">NETWORK</span><br>
+      <br>
+      <span style="height:40px; cursor:pointer" onclick="myFunction2()">DATA</span>
+      </div>
+    </div>
+    <div style="display:inline-flex">
+      <div style="background-color:#5B9BD5;opacity:0.5;padding-top:20px;border:1px solid #5B9BD5; border-radius: 10px; width: 130px; height:200px; margin:10px">
+        IDENTITY
+        <div align='center' style="padding-top:10px; font-size:12px; font-weight:bold">
+          Title <br>
+          First Name <br>
+          Last Name <br>
+          Date of Birth <br>
+          Origin of Birth <br>
+          Passport(s) <br>
+          Citizenship(s)
+        </div>
+      </div>
+      <div style="background-color:#ED7D31;opacity:0.5;padding-top:20px;border:1px solid #ED7D31; border-radius: 10px;width: 130px; height:200px; margin:10px">
+        CONTACT
+        <div align='center' style="padding-top:10px; font-size:12px;font-weight:bold">
+          Address <br>
+          Mobile<br>
+          E-mail(s) <br>
+          Facebook <br>
+          Twitter <br>
+          Youtube
+        </div>
+      </div>
+      <div style="background-color:#FF0000;opacity:0.5;padding-top:20px;border:1px solid #FF0000; border-radius: 10px;width: 130px; height:200px; margin:10px">
+        FINANCE
+        <div align='center' style="padding-top:10px; font-size:12px;font-weight:bold">
+          Institue <br>
+          Account <br>
+          Account Trascation <br>
+          Credit Card <br>
+          Credit details<br>
+          Loan details <br>
+          Debit details
+        </div>
+      </div>
+      <div style="background-color:#A9D18E;opacity:0.5;padding-top:20px;border:1px solid #A9D18E; border-radius: 10px;width: 130px; height:200px; margin:10px">
+        ALIAS
+        <div align='center' style="padding-top:50px; font-size:12px;font-weight:bold">
+          Alias Names
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div id='detailed' style="display:none">
+  <div style="display:inline-flex; justify-content: center; width:100%">
+    <img src="poi.png" width="120" height="120">
+  </div>
+  <div style="display: inline-flex; margin-top:-30px">
+    <div style="width:120px;padding-top:60px">
+      <img style="cursor:pointer" src="credit-card-1.png" width="60" height="60" alt='Banking' id='bank' onclick="myFunction()">
+      <span>Banking</span>
+    </div>
+    <div id='shop' style="width:120px;padding-top:60px">
+      <img style="cursor:pointer" src="cart-9.png" width="60" height="60" alt='Shopping'>
+      <span>Shopping</span>
+    </div>
+    <div id='travel' style="width:120px;padding-top:60px">
+      <img style="cursor:pointer" src="travel.png" width="60" height="60" alt='Travel'><br>
+      <span>Travel</span>
+    </div>
+    <div id='social' style="width:120px;padding-top:60px">
+      <img style="cursor:pointer" src="social_media.png" width="60" height="60" alt='Social'><br>
+      <span>Social</span>
+    </div>
+    <div id='parcel' style="width:120px;padding-top:60px">
+      <img style="cursor:pointer" src="box.png" width="60" height="60" alt='Parcel'><br>
+      <span>Parcels</span>
+    </div>
+  </div>
+  <div align='center' style="margin-top:15px; height: 200px" >
+    <div id='table' style="display:none">
+    <table class="fixed_headers">
+        <thead>
+            <tr style="border: 1px solid #ffffff">
+                <th >Institue</th>
+                <th >Transcation Date</th>
+                <th >Amount</th>
+                <th >Description</th>
+            </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Band of XYZ</td>
+            <td>2018-01-08</td>
+            <td>670.16</td>
+            <td>Air Flight Booking</td>
+          </tr>
+          <tr>
+            <td>Band of XYZ</td>
+            <td>2018-01-10</td>
+            <td>130.00</td>
+            <td>groceries</td>
+          </tr>
+          <tr>
+            <td>Band of XYZ</td>
+            <td>2018-01-10</td>
+            <td>15.00</td>
+            <td>DOMAIN PTY LTD</td>
+          </tr>
+          <tr style="color:#FF0000">
+            <td>Band of XYZ</td>
+            <td>2018-01-12</td>
+            <td>2000.00</td>
+            <td>overseas transfer from 10093344</td>
+          </tr>
+          <tr style="color:#FF0000">
+            <td>Band of XYZ</td>
+            <td>2018-01-12</td>
+            <td>2000.00</td>
+            <td>overseas transfer from 23866666</td>
+          </tr>
+          <tr style="color:#FF0000">
+            <td>Band of XYZ</td>
+            <td>2018-01-13</td>
+            <td>1500.00</td>
+            <td>overseas transfer from 10093334</td>
+          </tr>
+          <tr>
+            <td>Band of XYZ</td>
+            <td>2018-01-18</td>
+            <td>20.44</td>
+            <td>COFFEE PTY LTD</td>
+          </tr>
+          <tr>
+            <td>Band of XYZ</td>
+            <td>2018-01-19</td>
+            <td>33.16</td>
+            <td>Greig Appliances Ltd</td>
+          </tr>
+          <tr>
+            <td>Band of XYZ</td>
+            <td>2018-01-19</td>
+            <td>12.24</td>
+            <td>POLLY PTY LTD</td>
+          </tr>
+          <tr>
+            <td>Band of XYZ</td>
+            <td>2018-01-08</td>
+            <td>670.16</td>
+            <td>Air Flight Booking</td>
+          </tr>
+          <tr>
+            <td>Band of XYZ</td>
+            <td>2018-01-20</td>
+            <td>22.24</td>
+            <td>GENERAL STORES LTD</td>
+          </tr>
+          <tr>
+            <td>Band of XYZ</td>
+            <td>2018-01-21</td>
+            <td>57.44</td>
+            <td>HOLMES PTY LTD</td>
+          </tr>
+        </tbody>
+    </table>
+  </div>
+  </div>
+</div>
+
+<div id='network' style="display:none" onclick="myFunction4()">
+  <img src="network.png" width="600" height="393">
+</div>
+
+<script>
+function myFunction() {
+    document.getElementById("table").style.display = "block";
+    document.getElementById("travel").style.opacity = 0.5;
+    document.getElementById("shop").style.opacity= 0.5;
+    document.getElementById("parcel").style.opacity= 0.5;
+    document.getElementById("social").style.opacity= 0.5;
+}
+function myFunction2() {
+    document.getElementById('profile').style.display = "none";
+    document.getElementById("detailed").style.display = "block";
+}
+function myFunction3() {
+    document.getElementById('profile').style.display = "none";
+    document.getElementById("network").style.display = "block";
+}
+function myFunction4() {
+    document.getElementById('profile').style.display = "block";
+    document.getElementById("network").style.display = "none";
+}
+
+</script>
+</body>
